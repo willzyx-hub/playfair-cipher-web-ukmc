@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Ubuntu, Ubuntu_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
+const ubuntu = Ubuntu({
+    variable: "--font-sans",
+    weight: '400',
     subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
+const ubuntuMono = Ubuntu_Mono({
+    variable: "--font-mono",
+    weight: '400',
     subsets: ["latin"],
 });
 
@@ -25,9 +27,9 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+            className={`${ubuntu.variable} ${ubuntuMono.variable} h-full antialiased`}
         >
-            <body className="min-h-full flex flex-col bg-gray-200">
+            <body className="min-h-full flex flex-col bg-gray-100">
                 {children}
             </body>
         </html>
