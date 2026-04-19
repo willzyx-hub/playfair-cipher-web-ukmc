@@ -1,18 +1,20 @@
+import { ButtonHTMLAttributes } from "react";
+
+type ButtonProps = {
+    type: 'button' | 'reset' | 'submit',
+    variant: 'primary' | 'secondary',
+    text: string,
+    onClick?: () => void,
+} & ButtonHTMLAttributes<HTMLButtonElement>;
+
 export function Button(
     {
         type,
         variant,
         text,
         onClick = () => { },
-        disabled = false,
-    }: {
-        type: 'button' | 'reset' | 'submit',
-        variant: 'primary' | 'secondary',
-        text: string,
-        onClick?: () => void,
-        disabled?: boolean,
-    }
-) {
+        ...rest
+    }: ButtonProps) {
     const base = 'px-4 py-3 font-semibold text-lg md:text-xl rounded-sm cursor-pointer transition duration-300';
 
     const variants = {
@@ -24,8 +26,8 @@ export function Button(
         <button
             type={type}
             onClick={onClick}
-            disabled={disabled}
             className={`${base} ${variants[variant]} disabled:cursor-not-allowed disabled:opacity-25`}
+            {...rest}
         >
             {text}
         </button>

@@ -77,49 +77,62 @@ export class PlayfairCipher {
         let steps = [];
         let result = '';
 
-        for (let [a, b] of pairs) {
-            let [r1, c1] = this.findPosition(a);
-            let [r2, c2] = this.findPosition(b);
+        for (let [inputFirstLetter, inputSecondLetter] of pairs) {
+            let [inputIndexR1, inputIndexC1] = this.findPosition(inputFirstLetter);
+            let [inputIndexR2, inputIndexC2] = this.findPosition(inputSecondLetter);
 
-            let outA, outB, rule;
+            let rule, outputFirstLetter, outputSecondLetter, outputIndexR1, outputIndexR2, outputIndexC1, outputIndexC2;
 
-            if (r1 === r2) {
+            if (inputIndexR1 === inputIndexR2) {
                 rule = 'Same Row';
-                if (mode === 'encrypt') {
-                    outA = this.matrix[r1][(c1 + 1) % 5];
-                    outB = this.matrix[r2][(c2 + 1) % 5];
-                } else {
-                    outA = this.matrix[r1][(c1 + 4) % 5];
-                    outB = this.matrix[r2][(c2 + 4) % 5];
-                }
-            } else if (c1 === c2) {
+                const addition = mode === 'encrypt' ? 1 : 4;
+
+                outputIndexC1 = (inputIndexC1 + addition) % 5;
+                outputIndexC2 = (inputIndexC2 + addition) % 5;
+                outputIndexR1 = outputIndexR2 = inputIndexR1;
+
+                outputFirstLetter = this.matrix[outputIndexR1][outputIndexC1];
+                outputSecondLetter = this.matrix[outputIndexR2][outputIndexC2];
+            } else if (inputIndexC1 === inputIndexC2) {
                 rule = 'Same Column';
-                if (mode === 'encrypt') {
-                    outA = this.matrix[(r1 + 1) % 5][c1];
-                    outB = this.matrix[(r2 + 1) % 5][c2];
-                } else {
-                    outA = this.matrix[(r1 + 4) % 5][c1];
-                    outB = this.matrix[(r2 + 4) % 5][c2];
-                }
+
+                const addition = mode === 'encrypt' ? 1 : 4;
+
+                outputIndexR1 = (inputIndexR1 + addition) % 5;
+                outputIndexR2 = (inputIndexR2 + addition) % 5;
+                outputIndexC1 = outputIndexC2 = inputIndexC1;
+
+                outputFirstLetter = this.matrix[outputIndexR1][outputIndexC1];
+                outputSecondLetter = this.matrix[outputIndexR2][outputIndexC2];
             } else {
                 rule = 'Rectangle';
-                outA = this.matrix[r1][c2];
-                outB = this.matrix[r2][c1];
+
+                outputIndexR1 = inputIndexR1;
+                outputIndexC1 = inputIndexC2;
+                outputIndexR2 = inputIndexR2;
+                outputIndexC2 = inputIndexC1;
+
+                outputFirstLetter = this.matrix[outputIndexR1][outputIndexC1];
+                outputSecondLetter = this.matrix[outputIndexR2][outputIndexC2];
             }
 
-            result += outA + outB;
+            result += outputFirstLetter + outputSecondLetter;
 
             steps.push({
-                input: a + b,
-                output: outA + outB,
-                rule,
-                position: [
-                    [r1, c1],
-                    [r2, c2]
+                input: inputFirstLetter + inputSecondLetter,
+                output: outputFirstLetter + outputSecondLetter,
+                inputPosition: [
+                    [inputIndexR1, inputIndexC1],
+                    [inputIndexR2, inputIndexC2]
                 ],
+                outputPosition: [
+                    [outputIndexR1, outputIndexC1],
+                    [outputIndexR2, outputIndexC2],
+                ],
+                rule,
             })
         }
 
-        return {result, steps};
+        return { result, steps };
     }
 }
