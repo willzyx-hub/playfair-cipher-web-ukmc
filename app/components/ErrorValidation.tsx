@@ -1,6 +1,6 @@
 import { ValidateResult } from "react-hook-form";
 
-export function ErrorInput({ message }: { message: ValidateResult }) {
+export function ErrorValidation({ message }: { message: ValidateResult }) {
     return (
         <small
             className="flex items-center gap-1 text-red-500">

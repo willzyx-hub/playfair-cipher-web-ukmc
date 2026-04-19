@@ -1,6 +1,6 @@
 import { TextareaHTMLAttributes } from "react";
 import { FieldErrors, FieldValues, Path, UseFormRegister } from "react-hook-form";
-import { ErrorInput } from "./ErrorInput";
+import { ErrorValidation } from "./ErrorValidation";
 
 type TextAreaProps<T extends FieldValues> = {
     name: string,
@@ -35,7 +35,7 @@ export function TextArea<T extends FieldValues>({
             {
                 errors?.[registerId]?.types && (
                     Object.values(errors[registerId].types).map((message, i) => (
-                        <ErrorInput key={i} message={message} />
+                        <ErrorValidation key={i} message={message} />
                     ))
                 )
             }
