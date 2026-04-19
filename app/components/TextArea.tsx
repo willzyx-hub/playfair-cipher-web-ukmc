@@ -24,7 +24,7 @@ export function TextArea<T extends FieldValues>({
             <label
                 htmlFor={name}
                 className="font-semibold text-lg md:text-xl">
-                Plain text
+                {label}
             </label>
             <textarea
                 id={name}

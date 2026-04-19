@@ -25,7 +25,7 @@ export function Input<T extends FieldValues>({
             <label
                 htmlFor={name}
                 className="font-semibold text-lg md:text-xl">
-                Key
+                {label}
             </label>
             <input
                 id={name}

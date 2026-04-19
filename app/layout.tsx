@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Ubuntu, Ubuntu_Mono } from "next/font/google";
 import "./globals.css";
+import { LocaleProvider } from "@/context/LocaleContext";
+import { Providers } from "@/context/Provider";
 
 const ubuntu = Ubuntu({
     variable: "--font-sans",
@@ -25,13 +27,17 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html
-            lang="en"
-            className={`${ubuntu.variable} ${ubuntuMono.variable} h-full antialiased`}
-        >
-            <body className="min-h-full max-w-7xl block mx-auto bg-slate-50">
-                {children}
-            </body>
-        </html>
+        <LocaleProvider>
+            <html
+                lang="en"
+                className={`${ubuntu.variable} ${ubuntuMono.variable} h-full antialiased`}
+            >
+                <body className="min-h-full max-w-7xl block mx-auto bg-slate-50">
+                    <Providers>
+                        {children}
+                    </Providers>
+                </body>
+            </html>
+        </LocaleProvider>
     );
 }

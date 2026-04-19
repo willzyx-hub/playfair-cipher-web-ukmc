@@ -48,11 +48,11 @@ export class PlayfairCipher {
         return [-1, -1]; // For safety TS
     }
 
-    prepareText(text: string, mode: 'encrypt' | 'decrypt') {
+    prepareText(text: string, mode: 'encryption' | 'decryption') {
         text = text.toUpperCase().replace(/J/g, 'I').replace(/[^A-Z]/g, '');
         const pairs = [];
 
-        if (mode === 'encrypt') {
+        if (mode === 'encryption') {
             for (let i = 0; i < text.length; i += 2) {
                 const firstLetter = text[i];
                 const secondLetter = text[i + 1];
@@ -79,7 +79,7 @@ export class PlayfairCipher {
         return pairs;
     }
 
-    process(text: string, mode: 'encrypt' | 'decrypt') {
+    process(text: string, mode: 'encryption' | 'decryption') {
         const pairs = this.prepareText(text, mode);
         const steps = [];
         let result = '';
@@ -92,13 +92,13 @@ export class PlayfairCipher {
 
             if (inputIndexR1 === inputIndexR2) {
                 rule = 'Same Row';
-                const addition = mode === 'encrypt' ? 1 : 4;
+                const addition = mode === 'encryption' ? 1 : 4;
                 outputIndexC1 = (inputIndexC1 + addition) % 5;
                 outputIndexC2 = (inputIndexC2 + addition) % 5;
                 outputIndexR1 = outputIndexR2 = inputIndexR1;
             } else if (inputIndexC1 === inputIndexC2) {
                 rule = 'Same Column';
-                const addition = mode === 'encrypt' ? 1 : 4;
+                const addition = mode === 'encryption' ? 1 : 4;
                 outputIndexR1 = (inputIndexR1 + addition) % 5;
                 outputIndexR2 = (inputIndexR2 + addition) % 5;
                 outputIndexC1 = outputIndexC2 = inputIndexC1;
