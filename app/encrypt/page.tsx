@@ -39,14 +39,14 @@ export default function EncryptPage() {
 
         setMatrix(cipher.matrix);
 
-        const { result, steps } = cipher.process(data.plainText);
+        const { result, steps } = cipher.process(data.plainText, 'encrypt');
         setResult(result);
         setSteps(steps);
         setCurrent(0);
     }
 
     const isHighlighted = (r: number, c: number) => {
-        if (current < 0) return false;
+        if (current < 0) return 'bg-slate-100';
         let step = steps[current];
         let color = '';
 
@@ -89,6 +89,7 @@ export default function EncryptPage() {
                             register={register}
                             registerId="plainText"
                             errors={errors}
+                            placeholder="Message want to be encrypt"
                             defaultValue={''}
                             rows={5}
                             required

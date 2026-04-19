@@ -18,6 +18,7 @@ export function TextArea<T extends FieldValues>({
     errors,
     ...rest
 }: TextAreaProps<T>) {
+    console.log(errors);
     return (
         <div className="flex flex-col gap-1">
             <label

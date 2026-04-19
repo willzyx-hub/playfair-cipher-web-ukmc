@@ -29,7 +29,7 @@ export default function RootLayout({
             lang="en"
             className={`${ubuntu.variable} ${ubuntuMono.variable} h-full antialiased`}
         >
-            <body className="min-h-full max-w-7xl block mx-auto bg-gray-100">
+            <body className="min-h-full max-w-7xl block mx-auto bg-slate-50">
                 {children}
             </body>
         </html>

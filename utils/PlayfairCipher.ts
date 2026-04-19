@@ -17,7 +17,6 @@ export class PlayfairCipher {
             }
         };
 
-
         // Add remaining letter
         for (let i = 65; i <= 90; i++) {
             let char = String.fromCharCode(i);
@@ -49,35 +48,43 @@ export class PlayfairCipher {
         return [-1, -1]; // For safety TS
     }
 
-    prepareText(text: string) {
+    prepareText(text: string, mode: 'encrypt' | 'decrypt') {
         text = text.toUpperCase().replace(/J/g, 'I').replace(/[^A-Z]/g, '');
-        let pairs = [];
+        const pairs = [];
 
-        for (let i = 0; i < text.length; i += 2) {
-            let a = text[i];
-            let b = text[i + 1];
+        if (mode === 'encrypt') {
+            for (let i = 0; i < text.length; i += 2) {
+                const firstLetter = text[i];
+                const secondLetter = text[i + 1];
 
-            if (a === b) {
-                pairs.push([a, 'X']);
-                i--;
-            } else {
-                if (b) {
-                    pairs.push([a, b]);
+                if (firstLetter === secondLetter) {
+                    pairs.push([firstLetter, 'X']);
+                    i--;
                 } else {
-                    pairs.push([a, 'X']);
+                    if (secondLetter) {
+                        pairs.push([firstLetter, secondLetter]);
+                    } else {
+                        pairs.push([firstLetter, 'X']);
+                    }
                 }
             }
-        }
+        } else {
+            for (let i = 0; i < text.length; i += 2) {
+                const firstLetter = text[i];
+                const secondLetter = text[i + 1];
 
+                pairs.push([firstLetter, secondLetter])
+            }
+        }
         return pairs;
     }
 
-    process(text: string, mode: 'encrypt' | 'decrypt' = 'encrypt') {
-        let pairs = this.prepareText(text);
-        let steps = [];
+    process(text: string, mode: 'encrypt' | 'decrypt') {
+        const pairs = this.prepareText(text, mode);
+        const steps = [];
         let result = '';
 
-        for (let [inputFirstLetter, inputSecondLetter] of pairs) {
+        for (const [inputFirstLetter, inputSecondLetter] of pairs) {
             let [inputIndexR1, inputIndexC1] = this.findPosition(inputFirstLetter);
             let [inputIndexR2, inputIndexC2] = this.findPosition(inputSecondLetter);
 
@@ -86,36 +93,25 @@ export class PlayfairCipher {
             if (inputIndexR1 === inputIndexR2) {
                 rule = 'Same Row';
                 const addition = mode === 'encrypt' ? 1 : 4;
-
                 outputIndexC1 = (inputIndexC1 + addition) % 5;
                 outputIndexC2 = (inputIndexC2 + addition) % 5;
                 outputIndexR1 = outputIndexR2 = inputIndexR1;
-
-                outputFirstLetter = this.matrix[outputIndexR1][outputIndexC1];
-                outputSecondLetter = this.matrix[outputIndexR2][outputIndexC2];
             } else if (inputIndexC1 === inputIndexC2) {
                 rule = 'Same Column';
-
                 const addition = mode === 'encrypt' ? 1 : 4;
-
                 outputIndexR1 = (inputIndexR1 + addition) % 5;
                 outputIndexR2 = (inputIndexR2 + addition) % 5;
                 outputIndexC1 = outputIndexC2 = inputIndexC1;
-
-                outputFirstLetter = this.matrix[outputIndexR1][outputIndexC1];
-                outputSecondLetter = this.matrix[outputIndexR2][outputIndexC2];
             } else {
                 rule = 'Rectangle';
-
                 outputIndexR1 = inputIndexR1;
                 outputIndexC1 = inputIndexC2;
                 outputIndexR2 = inputIndexR2;
                 outputIndexC2 = inputIndexC1;
-
-                outputFirstLetter = this.matrix[outputIndexR1][outputIndexC1];
-                outputSecondLetter = this.matrix[outputIndexR2][outputIndexC2];
             }
 
+            outputFirstLetter = this.matrix[outputIndexR1][outputIndexC1];
+            outputSecondLetter = this.matrix[outputIndexR2][outputIndexC2];
             result += outputFirstLetter + outputSecondLetter;
 
             steps.push({
