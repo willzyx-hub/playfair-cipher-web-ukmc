@@ -1,7 +1,7 @@
 'use client'
 
 import { PlayfairCipher } from '@/utils/PlayfairCipher';
-import { useEffect, useState } from 'react';
+import { useEffect, useEffectEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -51,10 +51,13 @@ export default function EncryptPage() {
     const [current, setCurrent] = useState(-1);
     const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
 
-    // Initial value for cipherKey
-    useEffect(() => {
+    const setInitialCipherKey = useEffectEvent(() => {
         const cipherKey = localStorage.getItem('cipherKey') || '';
         setValue("cipherKey", cipherKey);
+    });
+
+    useEffect(() => {
+        setInitialCipherKey();
     }, []);
 
     const onSubmit = (data: Schema) => {

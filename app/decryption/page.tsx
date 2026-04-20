@@ -1,7 +1,7 @@
 'use client'
 
 import { PlayfairCipher } from '@/utils/PlayfairCipher';
-import { useEffect, useState } from 'react';
+import { useEffect, useEffectEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/app/components/Button';
 import { Input } from '@/app/components/Input';
 import { TextArea } from '@/app/components/TextArea';
-import {Modal} from '@/app/components/Modal';
+import { Modal } from '@/app/components/Modal';
 import { StepsResult } from '@/app/components/StepsResult';
 import { HeaderButton } from '@/app/components/HeaderButton';
 
@@ -51,10 +51,13 @@ export default function DecryptPage() {
     const [current, setCurrent] = useState(-1);
     const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
 
-    // Initial value for cipherKey
-    useEffect(() => {
+    const setInitialCipherKey = useEffectEvent(() => {
         const cipherKey = localStorage.getItem('cipherKey') || '';
         setValue("cipherKey", cipherKey);
+    });
+
+    useEffect(() => {
+        setInitialCipherKey();
     }, []);
 
     const onSubmit = (data: Schema) => {
