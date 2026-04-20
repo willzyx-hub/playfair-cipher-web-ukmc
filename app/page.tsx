@@ -8,6 +8,14 @@ export default function Home() {
 
     return (
         <main className="h-screen flex flex-col justify-center items-center p-4 md:p-20">
+            <svg className="fixed top-20 left-20 size-24 text-slate-700 animate-bounce opacity-50" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z" />
+            </svg>
+
+            <svg className="fixed bottom-20 right-20 size-24 text-slate-700 animate-bounce opacity-50" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14v3m4-6V7a3 3 0 1 1 6 0v4M5 11h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z" />
+            </svg>
+            
             <div className="mb-12 text-center">
                 <h1 className="mb-8 text-4xl md:text-6xl font-extrabold">Playfair Cipher</h1>
                 <p className="text-gray-600 text-lg md:text-2xl">
