@@ -1,6 +1,8 @@
-import { InputHTMLAttributes } from "react";
-import { FieldErrors, FieldValues, Path, UseFormRegister } from "react-hook-form";
-import { ErrorValidation } from "./ErrorValidation";
+'use client'
+
+import { InputHTMLAttributes } from 'react';
+import { FieldErrors, FieldValues, Path, UseFormRegister } from 'react-hook-form';
+import { ErrorValidation } from './ErrorValidation';
 
 type InputProps<T extends FieldValues> = {
     name: string,

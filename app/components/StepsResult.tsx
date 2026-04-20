@@ -1,8 +1,8 @@
-"use client"
+'use client'
 
-import { useTranslation } from "react-i18next";
-import { Button } from "./Button";
-import React, { SetStateAction } from "react";
+import { useTranslation } from 'react-i18next';
+import { Button } from './Button';
+import React, { SetStateAction } from 'react';
 
 type StepsResultProps = {
     steps: {
@@ -50,10 +50,10 @@ export function StepsResult({ steps, current, setCurrent }: StepsResultProps) {
                     disabled={current === steps.length - 1}
                 >
                     <div className="flex items-center gap-2">
+                        <span>{t('After')}</span>
                         <svg className="size-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 6v12M8 6v12l8-6-8-6Z" />
                         </svg>
-                        <span>{t('After')}</span>
                     </div>
                 </Button>
             </div>

@@ -1,6 +1,8 @@
-import { TextareaHTMLAttributes } from "react";
-import { FieldErrors, FieldValues, Path, UseFormRegister } from "react-hook-form";
-import { ErrorValidation } from "./ErrorValidation";
+'use client'
+
+import { TextareaHTMLAttributes } from 'react';
+import { FieldErrors, FieldValues, Path, UseFormRegister } from 'react-hook-form';
+import { ErrorValidation } from './ErrorValidation';
 
 type TextAreaProps<T extends FieldValues> = {
     name: string,

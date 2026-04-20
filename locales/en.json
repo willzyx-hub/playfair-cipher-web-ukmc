@@ -24,5 +24,10 @@
     "Same Column Encrypt Description": "This condition occurs when the two input letters are in the same column (C1 = C2) but different rows (R1 ≠ R2). The encrypted letters are obtained from the rows below each input letter. If a letter is in the bottom row, it wraps around to the top row.",
     "Same Column Decrypt Description": "This condition occurs when the two input letters are in the same column (C1 = C2) but different rows (R1 ≠ R2). The decrypted letters are obtained from the rows above each input letter. If a letter is in the top row, it wraps around to the bottom row.",
     "Before": "Before",
-    "After": "After"
+    "After": "After",
+    "Cannot be empty": "Cannot be empty",
+    "Alphabet only": "Alphabet only",
+    "Text even length": "Text must have an even length",
+    "and cannot have same pair of 2 letter": " and cannot have same pair of 2 letter",
+    "Text cannot have same pair of 2 letter": "Text cannot have same pair of 2 letter"
 }

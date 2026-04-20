@@ -1,13 +1,13 @@
-"use client"
+'use client'
 
-import { redirect } from "next/navigation";
-import { Button } from "./Button";
-import Image from "next/image";
+import { redirect } from 'next/navigation';
+import { Button } from './Button';
+import Image from 'next/image';
 
-import IndonesiaFlag from "@/public/images/Indonesia.jpg";
-import USAFlag from "@/public/images/USA.jpg";
-import { useTranslation } from "react-i18next";
-import React, { SetStateAction } from "react";
+import IndonesiaFlag from '@/public/images/Indonesia.jpg';
+import USAFlag from '@/public/images/USA.jpg';
+import { useTranslation } from 'react-i18next';
+import React, { SetStateAction } from 'react';
 
 type HeaderButtonProps = {
     locale: 'en' | 'id',

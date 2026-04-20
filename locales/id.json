@@ -24,5 +24,10 @@
     "Same Column Encrypt Description": "Kondisi ini dapat ditemukan ketika input dua huruf memiliki kolom yang sama (C1 = C2) namun baris berbeda (R1 ≠ R2). Hasil huruf enkripsi didapat dari baris huruf yang berada di bawah masing-masing huruf input. Jika huruf input berada di baris paling bawah, maka hasil huruf enkripsi kembali ke baris paling atas.",
     "Same Column Decrypt Description": "Kondisi ini dapat ditemukan ketika input dua huruf memiliki kolom yang sama (C1 = C2) namun baris berbeda (R1 ≠ R2). Hasil huruf enkripsi didapat dari baris huruf yang berada di atas masing-masing huruf input. Jika huruf input berada di baris paling atas, maka hasil huruf enkripsi kembali ke baris paling bawah.",
     "Before": "Sebelum",
-    "After": "Sesudah"
+    "After": "Sesudah",
+    "Cannot be empty": "Tidak boleh kosong",
+    "Alphabet only": "Hanya alfabet",
+    "Text even length": "Teks harus memiliki panjang yang genap",
+    "and cannot have same pair of 2 letter": " dan tidak bisa memiliki pasangan 2 huruf yang sama",
+    "Text cannot have same pair of 2 letter": "Teks  tidak bisa memiliki pasangan 2 huruf yang sama"
 }

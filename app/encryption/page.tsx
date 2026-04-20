@@ -1,25 +1,26 @@
-"use client"
+'use client'
 
-import { PlayfairCipher } from "@/utils/PlayfairCipher";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Button } from "../components/Button";
-import { Input } from "../components/Input";
-import { TextArea } from "../components/TextArea";
-import { schemaEncryptPage } from "@/utils/validation";
-import { useTranslation } from "react-i18next";
-import "@/utils/i18next";
-import { useLocale } from "@/context/LocaleContext";
-import Modal from "../components/Modal";
-import Image from "next/image";
-import { StepsResult } from "../components/StepsResult";
+import { PlayfairCipher } from '@/utils/PlayfairCipher';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import Image from 'next/image';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { useTranslation } from 'react-i18next';
 
-import RectangleEncryptionIlustration from "@/public/images/rectangle-encryption-ilustration.jpg";
-import SameRowEncryptIionlustration from "@/public/images/same-row-encryption-ilustration.jpg";
-import SameColumnEncryptionIlustration from "@/public/images/same-column-encryption-ilustration.jpg";
-import { HeaderButton } from "../components/HeaderButton";
+import { Button } from '@/app/components/Button';
+import { Input } from '@/app/components/Input';
+import { TextArea } from '@/app/components/TextArea';
+import { Modal } from '@/app/components/Modal';
+import { StepsResult } from '@/app/components/StepsResult';
+import { HeaderButton } from '@/app/components/HeaderButton';
+
+import { schemaEncryptPage } from '@/utils/validation';
+import { useLocale } from '@/context/LocaleContext';
+
+import RectangleEncryptionIlustration from '@/public/images/rectangle-encryption-ilustration.jpg';
+import SameRowEncryptIionlustration from '@/public/images/same-row-encryption-ilustration.jpg';
+import SameColumnEncryptionIlustration from '@/public/images/same-column-encryption-ilustration.jpg';
 
 type Schema = z.infer<typeof schemaEncryptPage>;
 

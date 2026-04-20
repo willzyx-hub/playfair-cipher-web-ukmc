@@ -1,25 +1,26 @@
-"use client"
+'use client'
 
-import { PlayfairCipher } from "@/utils/PlayfairCipher";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Button } from "../components/Button";
-import { Input } from "../components/Input";
-import { TextArea } from "../components/TextArea";
-import { schemaDecryptPage } from "@/utils/validation";
-import { useTranslation } from "react-i18next";
-import "@/utils/i18next";
-import { useLocale } from "@/context/LocaleContext";
-import Modal from "../components/Modal";
-import Image from "next/image";
-import RectangleDecryptionIlustration from "@/public/images/rectangle-decryption-ilustration.jpg";
-import SameRowDecryptionIlustration from "@/public/images/same-row-decryption-ilustration.jpg";
-import SameColumnDecryptionIlustration from "@/public/images/same-column-decryption-ilustration.jpg";
-import { redirect } from "next/navigation";
-import { StepsResult } from "../components/StepsResult";
-import { HeaderButton } from "../components/HeaderButton";
+import { PlayfairCipher } from '@/utils/PlayfairCipher';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import Image from 'next/image';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { useTranslation } from 'react-i18next';
+
+import { Button } from '@/app/components/Button';
+import { Input } from '@/app/components/Input';
+import { TextArea } from '@/app/components/TextArea';
+import {Modal} from '@/app/components/Modal';
+import { StepsResult } from '@/app/components/StepsResult';
+import { HeaderButton } from '@/app/components/HeaderButton';
+
+import { schemaDecryptPage } from '@/utils/validation';
+import { useLocale } from '@/context/LocaleContext';
+
+import RectangleDecryptionIlustration from '@/public/images/rectangle-decryption-ilustration.jpg';
+import SameRowDecryptionIlustration from '@/public/images/same-row-decryption-ilustration.jpg';
+import SameColumnDecryptionIlustration from '@/public/images/same-column-decryption-ilustration.jpg';
 
 type Schema = z.infer<typeof schemaDecryptPage>;
 

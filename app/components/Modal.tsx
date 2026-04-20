@@ -1,4 +1,6 @@
-import { Dispatch, SetStateAction } from "react";
+'use client'
+
+import { Dispatch, SetStateAction } from 'react';
 
 type ModalProps = {
     children: React.ReactNode
@@ -6,7 +8,7 @@ type ModalProps = {
     setIsModalOpen: Dispatch<SetStateAction<boolean>>,
 };
 
-export default function Modal({ children, isModalOpen, setIsModalOpen }: ModalProps) {
+export function Modal({ children, isModalOpen, setIsModalOpen }: ModalProps) {
     return (
         <>
             <div

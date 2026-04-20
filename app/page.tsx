@@ -1,8 +1,7 @@
-"use client"
+'use client'
 
-import Link from "next/link";
-import { useTranslation } from "react-i18next";
-import "../utils/i18next";
+import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 export default function Home() {
     const { t } = useTranslation();

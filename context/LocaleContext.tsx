@@ -1,7 +1,7 @@
-"use client"
+'use client'
 
-import React, { createContext, SetStateAction, useContext, useEffect, useState } from "react";
-import i18next from "@/utils/i18next";
+import React, { createContext, SetStateAction, useContext, useEffect, useState } from 'react';
+import i18next from '@/utils/i18next';
 
 function getLocale(): 'en' | 'id' {
     const locale = localStorage.getItem('locale');

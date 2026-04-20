@@ -1,4 +1,6 @@
-import React, { ButtonHTMLAttributes } from "react";
+'use client'
+
+import React, { ButtonHTMLAttributes } from 'react';
 
 type ButtonProps = {
     type: 'button' | 'reset' | 'submit',
