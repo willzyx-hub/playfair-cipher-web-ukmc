@@ -1,15 +1,7 @@
 'use client'
 
-import React, { createContext, SetStateAction, useContext, useEffect, useState } from 'react';
+import React, { createContext, SetStateAction, useContext, useEffect, useEffectEvent, useState } from 'react';
 import i18next from '@/utils/i18next';
-
-function getLocale(): 'en' | 'id' {
-    const locale = localStorage.getItem('locale');
-    if (locale === 'en' || locale === 'id') {
-        return locale;
-    }
-    return 'en';
-}
 
 type LocaleContextType = {
     locale: 'en' | 'id',
@@ -24,8 +16,16 @@ const LocaleContext = createContext<LocaleContextType>({
 function LocaleProvider({ children }: { children: React.ReactNode }) {
     const [locale, setLocale] = useState<'en' | 'id'>('en');
 
+    const getLocale = useEffectEvent(()=> {
+        const locale = localStorage.getItem('locale');
+        if (locale === 'en' || locale === 'id') {
+            return locale;
+        }
+        return 'en';
+    });
+
     useEffect(() => {
-        setLocale(() => getLocale());
+        getLocale();
     }, []);
 
     useEffect(() => {

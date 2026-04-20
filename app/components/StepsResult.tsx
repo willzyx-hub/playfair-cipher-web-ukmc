@@ -26,7 +26,7 @@ export function StepsResult({ steps, current, setCurrent }: StepsResultProps) {
                 <span className="font-mono font-semibold p-1 bg-orange-100 border border-orange-500 rounded-sm">{steps[current].output}</span>
             </p>
 
-            <p className="mb-8 p-2 bg-slate-200 border border-slate-500 rounded-sm">"{t(steps[current].rule)}"</p>
+            <p className="mb-8 p-2 bg-slate-200 border border-slate-500 rounded-sm">{t(steps[current].rule)}</p>
 
             <div className="flex gap-4">
                 <Button

@@ -7,10 +7,10 @@ export class PlayfairCipher {
 
     generateMatrix(key: string) {
         key = key.toUpperCase().replace(/J/g, 'I');
-        let seen = new Set();
-        let matrix = [];
+        const seen = new Set();
+        const matrix = [];
 
-        for (let char of key) {
+        for (const char of key) {
             if (/[A-Z]/.test(char) && !seen.has(char)) {
                 seen.add(char);
                 matrix.push(char);
@@ -19,7 +19,7 @@ export class PlayfairCipher {
 
         // Add remaining letter
         for (let i = 65; i <= 90; i++) {
-            let char = String.fromCharCode(i);
+            const char = String.fromCharCode(i);
             if (char === 'J') continue;
             if (!seen.has(char)) {
                 seen.add(char);
@@ -27,7 +27,7 @@ export class PlayfairCipher {
             }
         }
 
-        let grid = [];
+        const grid = [];
         for (let i = 0; i < 5; i++) {
             grid.push(matrix.slice(i * 5, i * 5 + 5));
         }
@@ -85,10 +85,11 @@ export class PlayfairCipher {
         let result = '';
 
         for (const [inputFirstLetter, inputSecondLetter] of pairs) {
-            let [inputIndexR1, inputIndexC1] = this.findPosition(inputFirstLetter);
-            let [inputIndexR2, inputIndexC2] = this.findPosition(inputSecondLetter);
+            let rule, outputIndexR1, outputIndexR2, outputIndexC1, outputIndexC2;
 
-            let rule, outputFirstLetter, outputSecondLetter, outputIndexR1, outputIndexR2, outputIndexC1, outputIndexC2;
+            const [inputIndexR1, inputIndexC1] = this.findPosition(inputFirstLetter);
+            const [inputIndexR2, inputIndexC2] = this.findPosition(inputSecondLetter);
+
 
             if (inputIndexR1 === inputIndexR2) {
                 rule = 'Same Row';
@@ -110,8 +111,8 @@ export class PlayfairCipher {
                 outputIndexC2 = inputIndexC1;
             }
 
-            outputFirstLetter = this.matrix[outputIndexR1][outputIndexC1];
-            outputSecondLetter = this.matrix[outputIndexR2][outputIndexC2];
+            const outputFirstLetter = this.matrix[outputIndexR1][outputIndexC1];
+            const outputSecondLetter = this.matrix[outputIndexR2][outputIndexC2];
             result += outputFirstLetter + outputSecondLetter;
 
             steps.push({

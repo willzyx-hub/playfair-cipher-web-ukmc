@@ -70,7 +70,7 @@ export default function EncryptPage() {
 
     const isHighlighted = (r: number, c: number) => {
         if (current < 0) return 'bg-slate-100';
-        let step = steps[current];
+        const step = steps[current];
         let color = '';
 
         if (step.inputPosition.some(([rr, cc]) => rr === r && cc === c)) {
