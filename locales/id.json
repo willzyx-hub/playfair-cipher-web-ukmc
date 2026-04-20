@@ -30,5 +30,6 @@
     "Alphabet only": "Hanya alfabet",
     "Text even length": "Teks harus memiliki panjang yang genap",
     "and cannot have same pair of 2 letter": " dan tidak bisa memiliki pasangan 2 huruf yang sama",
-    "Text cannot have same pair of 2 letter": "Teks  tidak bisa memiliki pasangan 2 huruf yang sama"
+    "Text cannot have same pair of 2 letter": "Teks  tidak bisa memiliki pasangan 2 huruf yang sama",
+    "Copy": "Salin"
 }

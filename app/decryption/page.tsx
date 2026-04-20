@@ -30,6 +30,7 @@ export default function DecryptPage() {
         handleSubmit,
         reset,
         setValue,
+        getValues,
         formState: { errors },
     } = useForm({
         resolver: zodResolver(schemaDecryptPage),
@@ -48,7 +49,6 @@ export default function DecryptPage() {
         rule: string;
     }[]>([]);
     const [current, setCurrent] = useState(-1);
-    const [result, setResult] = useState('');
     const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
 
     // Initial value for cipherKey
@@ -65,7 +65,7 @@ export default function DecryptPage() {
 
         const { result, steps } = cipher.process(data.cipherText, 'decryption');
 
-        setResult(result);
+        setValue('plainText', result);
         setSteps(steps);
         setCurrent(0);
     }
@@ -175,6 +175,7 @@ export default function DecryptPage() {
                             register={register}
                             registerId="cipherText"
                             errors={errors}
+                            isCopiable={false}
                             placeholder="MESSAGE"
                             rows={5}
                             required
@@ -186,7 +187,8 @@ export default function DecryptPage() {
                             register={register}
                             registerId="plainText"
                             errors={errors}
-                            value={result}
+                            isCopiable={true}
+                            getValues={getValues}
                             rows={5}
                             readOnly
                         />
@@ -203,7 +205,6 @@ export default function DecryptPage() {
                             variant="secondary"
                             onClick={() => {
                                 reset();
-                                setResult('');
                                 setCurrent(-1);
                                 setMatrix(() => (new PlayfairCipher('')).matrix);
                                 setSteps([]);

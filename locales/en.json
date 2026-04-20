@@ -30,5 +30,6 @@
     "Alphabet only": "Alphabet only",
     "Text even length": "Text must have an even length",
     "and cannot have same pair of 2 letter": " and cannot have same pair of 2 letter",
-    "Text cannot have same pair of 2 letter": "Text cannot have same pair of 2 letter"
+    "Text cannot have same pair of 2 letter": "Text cannot have same pair of 2 letter",
+    "Copy": "Copy"
 }
