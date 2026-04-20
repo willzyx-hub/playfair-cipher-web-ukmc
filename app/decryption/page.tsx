@@ -29,6 +29,7 @@ export default function DecryptPage() {
         register,
         handleSubmit,
         reset,
+        setValue,
         formState: { errors },
     } = useForm({
         resolver: zodResolver(schemaDecryptPage),
@@ -53,8 +54,8 @@ export default function DecryptPage() {
     // Initial value for cipherKey
     useEffect(() => {
         const cipherKey = localStorage.getItem('cipherKey') || '';
-        reset({ cipherKey });
-    }, [reset]);
+        setValue("cipherKey", cipherKey);
+    }, []);
 
     const onSubmit = (data: Schema) => {
         const cipher = new PlayfairCipher(data.cipherKey);
