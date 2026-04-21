@@ -105,9 +105,8 @@ export default function DecryptPage() {
                         <h2 className="mb-4 text-2xl font-semibold">{`${t('Flow')} ${t('Decryption')}`}</h2>
                         <ul className="list-decimal ml-6 text-lg md:text-xl">
                             <li>{t('Step 1 Decrypt')}</li>
-                            <li>{t('Step 2 Decrypt')}</li>
                             <li>
-                                {t('Step 3 Decrypt')}
+                                {t('Step 2 Decrypt')}
                                 <ol className="list-disc ml-6">
                                     <li>
                                         <b>{t('Rectangle')}</b>

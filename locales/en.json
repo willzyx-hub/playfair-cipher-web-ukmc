@@ -10,7 +10,7 @@
     "Flow": "Flow",
     "Home": "Home",
     "Help": "Help",
-    "Step 1 Encrypt": "Each letter J will be replaced with the letter I",
+    "Step 1 Encrypt": "Each letter J will be replaced with the letter I.",
     "Step 2 Encrypt": "The text will be divided into pairs of 2 letters. If the total number of letters is odd, the last letter will be padded with X.",
     "Step 3 Encrypt": "The encryption process is performed repeatedly for every 2-letter pair, producing several possible patterns.",
     "Step 1 Decrypt": "The text will be divided into pairs of 2 letters.",
