@@ -25,7 +25,7 @@ function LocaleProvider({ children }: { children: React.ReactNode }) {
     });
 
     useEffect(() => {
-        getLocale();
+        setLocale(getLocale());
     }, []);
 
     useEffect(() => {

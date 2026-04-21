@@ -73,7 +73,7 @@ export function HeaderButton({
                 ) : (
                     <Image
                         src={IndonesiaFlag}
-                        alt="English (USA)"
+                        alt="Indonesia"
                         width={45}
                         height={30}
                     />

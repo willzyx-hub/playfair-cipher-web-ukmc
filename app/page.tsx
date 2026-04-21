@@ -17,8 +17,8 @@ export default function Home() {
             </svg>
 
             <div className="mb-12 text-center">
-                <h1 className="mb-8 text-4xl md:text-6xl text-slate-800 font-extrabold">Playfair Cipher</h1>
-                <p className="text-gray-600 text-lg md:text-2xl dark:text-gray-400">
+                <h1 className="mb-8 text-4xl md:text-6xl text-slate-800 dark:text-white font-extrabold">Playfair Cipher</h1>
+                <p className="text-slate-600 text-lg md:text-2xl dark:text-slate-400">
                     {t('Intro')}
                 </p>
             </div>
@@ -26,12 +26,12 @@ export default function Home() {
             <div className="flex gap-4">
                 <Link
                     href={'/encryption'}
-                    className="px-4 py-2 bg-gray-800 dark:bg-white text-white dark:text-gray-800 rounded-sm text-lg md:text-xl transition duration-300 hover:-translate-y-1 hover:opacity-75">
+                    className="px-4 py-2 bg-slate-800 dark:bg-white text-white dark:text-slate-800 rounded-sm text-lg md:text-xl transition duration-300 hover:-translate-y-1 hover:opacity-75">
                     {t('Encryption')}
                 </Link>
                 <Link
                     href={'/decryption'}
-                    className="px-4 py-2 border border-gray-800 dark:border-white text-gray-800 dark:text-white rounded-sm text-lg md:text-xl transition duration-300 hover:-translate-y-1 hover:opacity-75">
+                    className="px-4 py-2 border border-slate-800 dark:border-white text-slate-800 dark:text-white rounded-sm text-lg md:text-xl transition duration-300 hover:-translate-y-1 hover:opacity-75">
                     {t('Decryption')}
                 </Link>
             </div>
