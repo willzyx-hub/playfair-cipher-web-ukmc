@@ -1,13 +1,15 @@
 'use client'
 
 import { LocaleProvider } from '@/context/LocaleContext';
+import { ThemeProvider } from '@/context/ThemeContext';
 import React from 'react';
-import '@/utils/i18next';
 
 export function Providers({ children }: { children: React.ReactNode }) {
-    return (
-        <LocaleProvider>
-            {children}
-        </LocaleProvider>
-    );
+  return (
+    <ThemeProvider>
+      <LocaleProvider>
+        {children}
+      </LocaleProvider>
+    </ThemeProvider>
+  );
 }
