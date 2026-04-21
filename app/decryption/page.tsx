@@ -74,16 +74,16 @@ export default function DecryptPage() {
     }
 
     const isHighlighted = (r: number, c: number) => {
-        if (current < 0) return 'bg-slate-100';
+        if (current < 0) return 'bg-slate-100 dark:bg-slate-900';
         const step = steps[current];
         let color = '';
 
         if (step.inputPosition.some(([rr, cc]) => rr === r && cc === c)) {
-            color = 'bg-green-100 border border-green-500';
+            color = 'bg-green-100 dark:bg-green-800 border border-green-500 dark:border-green-100';
         } else if (step.outputPosition.some(([rr, cc]) => rr === r && cc === c)) {
-            color = 'bg-orange-100 border border-orange-500'
+            color = 'bg-orange-100 dark:bg-orange-800 border border-orange-500 dark:border-orange-100'
         } else {
-            color = 'bg-slate-100';
+            color = 'bg-slate-100 dark:bg-slate-900';
         }
         return color;
     }
@@ -91,12 +91,10 @@ export default function DecryptPage() {
     return (
         <div className="w-full p-4 md:p-8">
             <header className="mb-8 flex justify-between items-center">
-                <h1 className="text-4xl text-gray-700 font-bold">{t('Decryption')}</h1>
+                <h1 className="text-4xl text-slate-800 dark:text-white font-bold">{t('Decryption')}</h1>
 
                 <div className="flex gap-4">
                     <HeaderButton
-                        locale={locale}
-                        setLocale={setLocale}
                         setIsHelpModalOpen={setIsHelpModalOpen}
                     />
 
@@ -155,7 +153,7 @@ export default function DecryptPage() {
             </header>
 
             <main className="flex flex-col items-start md:flex-row gap-8">
-                <section className="w-full md:w-2/5 p-4 bg-white border border-gray-500 rounded-lg shadow-2xl">
+                <section className="w-full md:w-2/5 p-4 bg-transparent border border-gray-500 rounded-lg shadow-2xl">
                     <form
                         onSubmit={handleSubmit(onSubmit)}
                         noValidate
@@ -218,7 +216,7 @@ export default function DecryptPage() {
                     </form>
                 </section>
 
-                <section className="w-full md:w-3/5 p-4 bg-white border border-gray-500 rounded-lg shadow-2xl">
+                <section className="w-full md:w-3/5 p-4 bg-transparent border border-gray-500 rounded-lg shadow-2xl">
                     <div className="h-full grid grid-cols-5 grid-rows-5 gap-4 mb-8">
                         {
                             matrix.map((rowList, rowIndex) =>

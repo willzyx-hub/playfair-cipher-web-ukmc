@@ -8,15 +8,19 @@ import IndonesiaFlag from '@/public/images/Indonesia.jpg';
 import USAFlag from '@/public/images/USA.jpg';
 import { useTranslation } from 'react-i18next';
 import React, { SetStateAction } from 'react';
+import { useTheme } from '@/context/ThemeContext';
+import { useLocale } from '@/context/LocaleContext';
 
 type HeaderButtonProps = {
-    locale: 'en' | 'id',
-    setLocale: React.Dispatch<SetStateAction<'en' | 'id'>>,
     setIsHelpModalOpen: React.Dispatch<SetStateAction<boolean>>,
 };
 
-export function HeaderButton({ locale, setLocale, setIsHelpModalOpen }: HeaderButtonProps) {
+export function HeaderButton({
+    setIsHelpModalOpen
+}: HeaderButtonProps) {
     const { t } = useTranslation();
+    const { locale, setLocale } = useLocale();
+    const { theme, setTheme } = useTheme();
 
     return (
         <>
@@ -49,7 +53,15 @@ export function HeaderButton({ locale, setLocale, setIsHelpModalOpen }: HeaderBu
             <Button
                 type="button"
                 variant="secondary"
-                onClick={() => setLocale(locale === 'en' ? 'id' : 'en')}
+                onClick={() => setTheme(prev => prev === 'light' ? 'dark' : 'light')}
+            >
+                {theme === 'light' ? '☀️' : '🌙'}
+            </Button>
+
+            <Button
+                type="button"
+                variant="secondary"
+                onClick={() => setLocale(prev => prev === 'en' ? 'id' : 'en')}
             >
                 {locale === 'en' ? (
                     <Image

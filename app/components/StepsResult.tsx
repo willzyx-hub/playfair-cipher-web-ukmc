@@ -21,12 +21,12 @@ export function StepsResult({ steps, current, setCurrent }: StepsResultProps) {
     return (
         <div className="flex flex-col items-center">
             <p className="mb-4 text-2xl">
-                <span className="font-mono font-semibold p-1 bg-green-100 border border-green-500 rounded-sm">{steps[current].input}</span>
+                <span className="font-mono font-semibold p-1 bg-green-100 dark:bg-green-800 border border-green-500 dark:border-green-100 rounded-sm">{steps[current].input}</span>
                 <span className="mx-4">➡️</span>
-                <span className="font-mono font-semibold p-1 bg-orange-100 border border-orange-500 rounded-sm">{steps[current].output}</span>
+                <span className="font-mono font-semibold p-1 bg-orange-100 dark:bg-orange-800 border border-orange-500 dark:border-orange-100 rounded-sm">{steps[current].output}</span>
             </p>
 
-            <p className="mb-8 p-2 bg-slate-200 border border-slate-500 rounded-sm">{t(steps[current].rule)}</p>
+            <p className="mb-8 p-2 bg-slate-200 dark:bg-slate-700 border border-slate-500 rounded-sm">{t(steps[current].rule)}</p>
 
             <div className="flex gap-4">
                 <Button

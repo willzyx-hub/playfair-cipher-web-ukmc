@@ -1,47 +1,38 @@
 'use client'
-import * as React from 'react';
 
-export type Theme = 'light' | 'dark';
+import React, { SetStateAction, useEffect, useState } from 'react';
 
 export type ThemeContextType = {
-  theme: Theme,
-  toggleTheme: () => void,
+    theme: 'light' | 'dark',
+    setTheme: React.Dispatch<SetStateAction<'light' | 'dark'>>,
 }
 
 export const ThemeContext = React.createContext<ThemeContextType>({
-  theme: 'light',
-  toggleTheme: () => { },
+    theme: 'light',
+    setTheme: () => { },
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Initialize theme from storage or system preference
-  const [theme, setTheme] = React.useState<Theme>(() => {
-    if (typeof window === 'undefined') return 'light';
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light' || saved === 'dark') return saved;
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return prefersDark ? 'dark' : 'light';
-  });
+    const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+        if (typeof window === 'undefined') return 'light';
+        const saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') return saved;
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        return prefersDark ? 'dark' : 'light';
+    });
 
-  // Apply and persist theme on change
-  React.useEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.documentElement.classList.toggle('dark', theme === 'dark');
-      localStorage.setItem('theme', theme);
-    }
-  }, [theme]);
+    useEffect(() => {
+        document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', theme);
+    }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-  };
-
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+    return (
+        <ThemeContext.Provider value={{ theme, setTheme }}>
+            {children}
+        </ThemeContext.Provider>
+    );
 }
 
 export function useTheme() {
-  return React.useContext(ThemeContext);
+    return React.useContext(ThemeContext);
 }

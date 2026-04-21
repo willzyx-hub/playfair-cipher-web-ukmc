@@ -46,7 +46,7 @@ export function TextArea<T extends FieldValues>({
             <div className='flex items-center gap-4'>
                 <label
                     htmlFor={name}
-                    className="font-semibold text-lg md:text-xl">
+                    className="font-semibold text-lg md:text-xl text-slate-700 dark:text-white">
                     {label}
                 </label>
                 {
@@ -77,7 +77,8 @@ export function TextArea<T extends FieldValues>({
                 id={name}
                 {...register(registerId)}
                 {...rest}
-                className="px-3 py-2 border border-gray-500 rounded-sm text-gray-700">
+                className="px-3 py-2 border border-gray-500 rounded-sm text-gray-700 dark:text-gray-300"
+            >
             </textarea>
             {
                 errors?.[registerId]?.types && (

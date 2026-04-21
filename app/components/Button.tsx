@@ -20,8 +20,8 @@ export function Button(
     const base = 'px-4 py-3 font-semibold text-lg md:text-xl rounded-sm cursor-pointer transition duration-300';
 
     const variants = {
-        primary: 'bg-slate-700 text-white hover:bg-slate-800',
-        secondary: 'bg-white border border-slate-700 text-slate-700 hover:bg-slate-100'
+        primary: 'bg-slate-700 dark:bg-white text-white dark:text-slate-800 hover:bg-slate-800 dark:hover:bg-slate-300',
+        secondary: 'bg-transparent hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-700 dark:border-white text-slate-700 dark:text-white'
     };
 
     return (
