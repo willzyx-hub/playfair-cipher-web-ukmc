@@ -9,6 +9,8 @@ import * as z from 'zod';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/components/Button';
+import { CopyButton } from '@/components/CopyButton';
+import { Label } from '@/components/Label';
 import { Input } from '@/components/Input';
 import { TextArea } from '@/components/TextArea';
 import { Modal } from '@/components/Modal';
@@ -155,40 +157,55 @@ export default function DecryptPage() {
                         noValidate
                         className="flex flex-col gap-4"
                     >
-                        <Input<Schema>
-                            name="cipher-key"
-                            type="text"
-                            label={t('Cipher Key')}
-                            register={register}
-                            registerId="cipherKey"
-                            errors={errors}
-                            placeholder="KEYWORD"
-                            required
-                        />
+                        <div className="flex flex-col gap-1">
+                            <Label name="cipher-key">
+                                {t('Cipher Key')}
+                            </Label>
 
-                        <TextArea<Schema>
-                            name="cipher-text"
-                            label={t('Cipher Text')}
-                            register={register}
-                            registerId="cipherText"
-                            errors={errors}
-                            isCopiable={false}
-                            placeholder="MESSAGE"
-                            rows={5}
-                            required
-                        />
+                            <Input<Schema>
+                                labelId="cipher-key"
+                                type="text"
+                                register={register}
+                                registerId="cipherKey"
+                                errors={errors}
+                                placeholder="KEYWORD"
+                                required
+                            />
+                        </div>
 
-                        <TextArea<Schema>
-                            name="plain-text"
-                            label={t('Plain Text')}
-                            register={register}
-                            registerId="plainText"
-                            errors={errors}
-                            isCopiable={true}
-                            getValues={getValues}
-                            rows={5}
-                            readOnly
-                        />
+                        <div className="flex flex-col gap-1">
+                            <Label name="cipher-text">
+                                {t('Cipher Text')}
+                            </Label>
+
+                            <TextArea<Schema>
+                                labelId="cipher-text"
+                                register={register}
+                                registerId="cipherText"
+                                errors={errors}
+                                placeholder="SECRET"
+                                rows={5}
+                                required
+                            />
+                        </div>
+
+                        <div className='flex flex-col gap-1'>
+                            <div className='flex items-center gap-4'>
+                                <Label name='plain-text'>
+                                    {t('Plain Text')}
+                                </Label>
+                                <CopyButton text={getValues('plainText')} />
+                            </div>
+
+                            <TextArea<Schema>
+                                labelId="plain-text"
+                                register={register}
+                                registerId="plainText"
+                                errors={errors}
+                                rows={5}
+                                readOnly
+                            />
+                        </div>
 
                         <Button
                             type="submit"

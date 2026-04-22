@@ -5,32 +5,25 @@ import { FieldErrors, FieldValues, Path, UseFormRegister } from 'react-hook-form
 import { ErrorValidation } from './ErrorValidation';
 
 type InputProps<T extends FieldValues> = {
-    name: string,
+    labelId: string,
     type: string,
-    label: string,
     register: UseFormRegister<T>,
     registerId: Path<T>,
     errors: FieldErrors<T>,
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export function Input<T extends FieldValues>({
-    name,
+    labelId,
     type,
-    label,
     register,
     registerId,
     errors,
     ...rest
 }: InputProps<T>) {
     return (
-        <div className="flex flex-col gap-1">
-            <label
-                htmlFor={name}
-                className="font-semibold text-lg md:text-xl text-slate-700 dark:text-white">
-                {label}
-            </label>
+        <>
             <input
-                id={name}
+                id={labelId}
                 type={type}
                 {...register(registerId)}
                 {...rest}
@@ -42,6 +35,6 @@ export function Input<T extends FieldValues>({
                     ))
                 )
             }
-        </div>
+        </>
     );
 }
