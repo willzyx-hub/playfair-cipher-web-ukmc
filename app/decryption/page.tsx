@@ -98,11 +98,11 @@ export default function DecryptPage() {
                     />
 
                     <Modal
+                        title={`${t('Flow')} ${t('Decryption')}`}
                         isModalOpen={isHelpModalOpen}
                         setIsModalOpen={setIsHelpModalOpen}
                     >
-                        <h2 className="mb-4 text-2xl font-semibold">{`${t('Flow')} ${t('Decryption')}`}</h2>
-                        <ul className="list-decimal ml-6 text-lg md:text-xl">
+                        <ul className="list-decimal ml-6 text-lg md:text-xl dark:text-slate-300">
                             <li>{t('Step 1 Decrypt')}</li>
                             <li>
                                 {t('Step 2 Decrypt')}

@@ -97,11 +97,11 @@ export default function EncryptPage() {
                     />
 
                     <Modal
+                        title={`${t('Flow')} ${t('Encryption')}`}
                         isModalOpen={isHelpModalOpen}
                         setIsModalOpen={setIsHelpModalOpen}
                     >
-                        <h2 className="mb-4 text-2xl font-semibold">{`${t('Flow')} ${t('Encryption')}`}</h2>
-                        <ul className="list-decimal ml-6 text-lg md:text-xl">
+                        <ul className="list-decimal ml-6 text-lg md:text-xl dark:text-slate-300">
                             <li>{t('Step 1 Encrypt')}</li>
                             <li>{t('Step 2 Encrypt')}</li>
                             <li>
