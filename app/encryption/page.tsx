@@ -16,7 +16,6 @@ import { StepsResult } from '@/app/components/StepsResult';
 import { HeaderButton } from '@/app/components/HeaderButton';
 
 import { schemaEncryptPage } from '@/utils/validation';
-import { useLocale } from '@/context/LocaleContext';
 
 import RectangleEncryptionIlustration from '@/public/images/rectangle-encryption-ilustration.jpg';
 import SameRowEncryptIionlustration from '@/public/images/same-row-encryption-ilustration.jpg';
@@ -36,9 +35,7 @@ export default function EncryptPage() {
         resolver: zodResolver(schemaEncryptPage),
         criteriaMode: 'all',
     });
-
     const { t } = useTranslation();
-    const { locale, setLocale } = useLocale();
 
     const [matrix, setMatrix] = useState<string[][]>(() => (new PlayfairCipher('')).matrix);
     const [steps, setSteps] = useState<{

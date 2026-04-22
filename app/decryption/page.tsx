@@ -16,7 +16,6 @@ import { StepsResult } from '@/app/components/StepsResult';
 import { HeaderButton } from '@/app/components/HeaderButton';
 
 import { schemaDecryptPage } from '@/utils/validation';
-import { useLocale } from '@/context/LocaleContext';
 
 import RectangleDecryptionIlustration from '@/public/images/rectangle-decryption-ilustration.jpg';
 import SameRowDecryptionIlustration from '@/public/images/same-row-decryption-ilustration.jpg';
@@ -36,9 +35,7 @@ export default function DecryptPage() {
         resolver: zodResolver(schemaDecryptPage),
         criteriaMode: 'all',
     });
-
     const { t } = useTranslation();
-    const { locale, setLocale } = useLocale();
 
     const [matrix, setMatrix] = useState<string[][]>(() => (new PlayfairCipher('')).matrix);
     const [steps, setSteps] = useState<{

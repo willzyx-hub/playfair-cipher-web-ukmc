@@ -15,20 +15,23 @@ const ThemeContext = React.createContext<ThemeContextType>({
 function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
-    const getTheme = useEffectEvent(() => {
-        const theme = localStorage.getItem('theme');
-        if (theme === 'light' || theme === 'dark') {
-            return theme;
-        }
+    const isValidTheme = (val: string): val is 'light' | 'dark' => {
+        return val === 'light' || val === 'dark';
+    };
 
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        return prefersDark ? 'dark' : 'light';
+    const getDefaultSystem = () => {
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+
+    const getTheme = useEffectEvent(() => {
+        const stored = localStorage.getItem('theme') || getDefaultSystem();
+        const validStored = isValidTheme(stored) ? stored : getDefaultSystem();
+        document.documentElement.setAttribute('data-theme', validStored);
+        setTheme(validStored);
     });
 
     useEffect(() => {
-        const theme = getTheme();
-        document.documentElement.setAttribute('data-theme', theme);
-        setTheme(theme);
+        getTheme();
     }, [])
 
     useEffect(() => {
@@ -52,4 +55,4 @@ function useTheme() {
 export {
     ThemeProvider,
     useTheme,
-}
+};

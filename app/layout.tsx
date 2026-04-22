@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Ubuntu, Ubuntu_Mono } from 'next/font/google';
 import './globals.css';
-import { LocaleProvider } from '@/context/LocaleContext';
 import { Providers } from '@/context/Providers';
 
 const ubuntu = Ubuntu({

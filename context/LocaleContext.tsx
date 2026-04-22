@@ -16,16 +16,22 @@ const LocaleContext = createContext<LocaleContextType>({
 function LocaleProvider({ children }: { children: React.ReactNode }) {
     const [locale, setLocale] = useState<'en' | 'id'>('en');
 
-    const getLocale = useEffectEvent(()=> {
-        const locale = localStorage.getItem('locale');
-        if (locale === 'en' || locale === 'id') {
-            return locale;
-        }
-        return 'en';
+    const isValidLocale = (val: string): val is 'en' | 'id' => {
+        return val === 'en' || val === 'id';
+    };
+
+    const getLocaleDefault = () => {
+        return navigator.language.split('-')[0];
+    };
+
+    const getLocale = useEffectEvent(() => {
+        const stored = localStorage.getItem('locale') || getLocaleDefault();
+        const validStored = isValidLocale(stored) ? stored : 'en';
+        setLocale(validStored);
     });
 
     useEffect(() => {
-        setLocale(getLocale());
+        getLocale();
     }, []);
 
     useEffect(() => {
