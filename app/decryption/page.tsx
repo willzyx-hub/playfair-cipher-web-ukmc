@@ -8,12 +8,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@/app/components/Button';
-import { Input } from '@/app/components/Input';
-import { TextArea } from '@/app/components/TextArea';
-import { Modal } from '@/app/components/Modal';
-import { StepsResult } from '@/app/components/StepsResult';
-import { HeaderButton } from '@/app/components/HeaderButton';
+import { Button } from '@/components/Button';
+import { Input } from '@/components/Input';
+import { TextArea } from '@/components/TextArea';
+import { Modal } from '@/components/Modal';
+import { StepsResult } from '@/components/StepsResult';
+import { HeaderButton } from '@/components/HeaderButton';
 
 import { schemaDecryptPage } from '@/utils/validation';
 
