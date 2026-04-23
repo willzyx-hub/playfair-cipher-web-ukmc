@@ -91,63 +91,61 @@ export default function EncryptPage() {
             <header className="mb-8 flex flex-wrap justify-between items-center gap-4">
                 <h1 className="text-4xl text-slate-800 dark:text-white font-bold">{t('Encryption')}</h1>
 
-                <div className="flex overflow-x-auto gap-4">
-                    <HeaderButton
-                        setIsHelpModalOpen={setIsHelpModalOpen}
-                    />
+                <HeaderButton
+                    setIsHelpModalOpen={setIsHelpModalOpen}
+                />
 
-                    <Modal
-                        title={`${t('Flow')} ${t('Encryption')}`}
-                        isModalOpen={isHelpModalOpen}
-                        setIsModalOpen={setIsHelpModalOpen}
-                    >
-                        <ul className="list-decimal ml-6 text-lg md:text-xl dark:text-slate-300">
-                            <li>{t('Step 1 Encrypt')}</li>
-                            <li>{t('Step 2 Encrypt')}</li>
-                            <li>
-                                {t('Step 3 Encrypt')}
-                                <ol className="list-disc ml-6">
-                                    <li>
-                                        <b>{t('Rectangle')}</b>
-                                        <div>
-                                            <p>{t('Rectangle Encrypt Description')}</p>
-                                            <Image
-                                                src={RectangleEncryptionIlustration}
-                                                alt={`${t('Rectangle')} ${t('Encryption')} ${t('Ilustration')}`}
-                                                width={838}
-                                                height={838}
-                                            />
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <b>{t('Same Row')}</b>
-                                        <div>
-                                            <p>{t('Same Row Encrypt Description')}</p>
-                                            <Image
-                                                src={SameRowEncryptIionlustration}
-                                                alt={`${t('Same Row')} ${t('Encryption')} ${t('Ilustration')}`}
-                                                width={838}
-                                                height={838}
-                                            />
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <b>{t('Same Column')}</b>
-                                        <div>
-                                            <p>{t('Same Column Encrypt Description')}</p>
-                                            <Image
-                                                src={SameColumnEncryptionIlustration}
-                                                alt={`${t('Same Column')} ${t('Encryption')} ${t('Ilustration')}`}
-                                                width={838}
-                                                height={838}
-                                            />
-                                        </div>
-                                    </li>
-                                </ol>
-                            </li>
-                        </ul>
-                    </Modal>
-                </div>
+                <Modal
+                    title={`${t('Flow')} ${t('Encryption')}`}
+                    isModalOpen={isHelpModalOpen}
+                    setIsModalOpen={setIsHelpModalOpen}
+                >
+                    <ul className="list-decimal ml-6 text-lg md:text-xl dark:text-slate-300">
+                        <li>{t('Step 1 Encrypt')}</li>
+                        <li>{t('Step 2 Encrypt')}</li>
+                        <li>
+                            {t('Step 3 Encrypt')}
+                            <ol className="list-disc ml-6">
+                                <li>
+                                    <b>{t('Rectangle')}</b>
+                                    <div>
+                                        <p>{t('Rectangle Encrypt Description')}</p>
+                                        <Image
+                                            src={RectangleEncryptionIlustration}
+                                            alt={`${t('Rectangle')} ${t('Encryption')} ${t('Ilustration')}`}
+                                            width={838}
+                                            height={838}
+                                        />
+                                    </div>
+                                </li>
+                                <li>
+                                    <b>{t('Same Row')}</b>
+                                    <div>
+                                        <p>{t('Same Row Encrypt Description')}</p>
+                                        <Image
+                                            src={SameRowEncryptIionlustration}
+                                            alt={`${t('Same Row')} ${t('Encryption')} ${t('Ilustration')}`}
+                                            width={838}
+                                            height={838}
+                                        />
+                                    </div>
+                                </li>
+                                <li>
+                                    <b>{t('Same Column')}</b>
+                                    <div>
+                                        <p>{t('Same Column Encrypt Description')}</p>
+                                        <Image
+                                            src={SameColumnEncryptionIlustration}
+                                            alt={`${t('Same Column')} ${t('Encryption')} ${t('Ilustration')}`}
+                                            width={838}
+                                            height={838}
+                                        />
+                                    </div>
+                                </li>
+                            </ol>
+                        </li>
+                    </ul>
+                </Modal>
             </header>
 
             <main className="flex flex-col items-start md:flex-row gap-8">

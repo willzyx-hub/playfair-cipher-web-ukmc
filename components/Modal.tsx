@@ -13,12 +13,12 @@ export function Modal({ title, isModalOpen, setIsModalOpen, children }: ModalPro
     return (
         <>
             <div
-                className={`fixed inset-0 bg-black/50 p-4 lg:p-8 flex justify-center items-center ${isModalOpen ? 'block' : 'hidden'}`}
+                className={`fixed z-40 inset-0 bg-black/50 p-4 lg:p-8 flex justify-center items-center ${isModalOpen ? 'block' : 'hidden'}`}
                 onClick={() => setIsModalOpen(false)}
             >
             </div>
 
-            <div className={`fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl p-4 transition duration-500 ${isModalOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+            <div className={`fixed z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl p-4 transition duration-500 ${isModalOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
                 <div className={`p-2 bg-white dark:bg-slate-800 border border-gray-200 rounded-lg shadow-2xl transition duration-500 ${isModalOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
                     <div className="mb-4 p-4 flex justify-between items-center">
                         <h2 className="text-slate-700 dark:text-white text-2xl font-semibold">{title}</h2>

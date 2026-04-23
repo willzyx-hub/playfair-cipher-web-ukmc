@@ -23,7 +23,7 @@ export function HeaderButton({
     const { theme, setTheme } = useTheme();
 
     return (
-        <>
+        <div className="flex overflow-x-auto gap-4">
             <Button
                 type="button"
                 variant="secondary"
@@ -64,21 +64,25 @@ export function HeaderButton({
                 onClick={() => setLocale(prev => prev === 'en' ? 'id' : 'en')}
             >
                 {locale === 'en' ? (
-                    <Image
-                        src={USAFlag}
-                        alt="English (USA)"
-                        width={45}
-                        height={30}
-                    />
+                    <div className="relative w-12 h-auto aspect-[16/10]">
+                        <Image
+                            src={USAFlag}
+                            alt="English (USA)"
+                            fill={true}
+                            className="w-full h-auto"
+                        />
+                    </div>
                 ) : (
-                    <Image
-                        src={IndonesiaFlag}
-                        alt="Indonesia"
-                        width={45}
-                        height={30}
-                    />
+                    <div className="relative w-12 h-auto aspect-[16/10]">
+                        <Image
+                            src={IndonesiaFlag}
+                            alt="Indonesia"
+                            fill={true}
+                            className="w-full h-auto"
+                        />
+                    </div>
                 )}
             </Button>
-        </>
+        </div>
     );
 }
